@@ -5,7 +5,7 @@
 .DEFAULT_GOAL := help
 
 ## all: Run tidy, gen, add-copyright, format, lint, cover, build ✨
-.PHONY: all build
+.PHONY: all
 all: tidy gen add-copyright format lint cover
 
 # ==============================================================================
@@ -237,6 +237,3 @@ clean:
 	@echo "${NOW} Starting to clean ..."
 	rm -rf bin/openim-* && rm -rf logs
 	@echo "${NOW} Clean done!"
-
-
-
