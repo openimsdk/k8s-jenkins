@@ -227,8 +227,23 @@ conversation:
 	@echo "${NOW} Starting to build rpc_conversation..."
 	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH};go build -ldflags="-w -s" -o ./bin/openim-rpc-conversation cmd/openim-rpc/openim-rpc-conversation/main.go
 
+.PHONY:friend
+friend:
+	@echo "${NOW} Starting to build rpc_conversation..."
+	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH};go build -ldflags="-w -s" -o ./bin/openim-rpc-friend cmd/openim-rpc/openim-rpc-friend/main.go
+
+.PHONY:third
+third:
+	@echo "${NOW} Starting to build rpc_conversation..."
+	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH};go build -ldflags="-w -s" -o ./bin/openim-rpc-third cmd/openim-rpc/openim-rpc-third/main.go
+
+.PHONY:auth
+auth:
+	@echo "${NOW} Starting to build rpc_conversation..."
+	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH};go build -ldflags="-w -s" -o ./bin/openim-rpc-auth cmd/openim-rpc/openim-rpc-auth/main.go
+
 .PHONY:build
-build: api gateway transfer push group msg user conversation
+build: api gateway transfer push group msg user conversation friend third auth
 	@echo "${NOW} Build done, files in ./bin as follow:"
 	@ls -l bin | grep openim-
 
