@@ -33,6 +33,19 @@ spec:
             - containerPort: 10140
               name: rpc
               protocol: TCP
+          volumeMounts:
+            - name: localtime
+              mountPath: /etc/localtime
+            - name: config
+              mountPath: ${CONF_PATH}
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/UTC
+        - name: config
+          configMap:
+            name: ${CONFIGMAP_NAME}
+      restartPolicy: Always
 ---
 # 外部访问的服务
 kind: Service
